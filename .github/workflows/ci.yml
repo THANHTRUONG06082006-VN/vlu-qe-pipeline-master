@@ -35,60 +35,19 @@ jobs:
       - name: Run Quality Gate 2 - Automated Regression Test
         run: npm run test:regression
 ```[cite: 1]
+* **Bước 3: Lưu file**[cite: 1]
+  * Nhấn **Commit changes...** $\rightarrow$ chọn **Commit directly to the `main` branch** $\rightarrow$ Nhấn **Commit changes**[cite: 1].
 
-4. Nhấn **Commit changes...** $\rightarrow$ **Commit changes** để lưu tệp[cite: 1].
+Chặng này thực hành đúng quy trình làm việc chuẩn trong dự án phần mềm: Tạo nhánh tính năng $\rightarrow$ Đẩy code $\rightarrow$ Kiểm tra tự động trên Pull Request $\rightarrow$ Merge vào nhánh chính[cite: 1].
 
----
 
-## CHẶNG 4: THỰC HÀNH QUY TRÌNH COMMIT, FEATURE BRANCH & MERGE CODE[cite: 1]
+* Tại trang chủ Repo, nhấn vào nút dropdown chọn nhánh đang ghi **`main`** (phía trên danh sách tệp, bên trái)[cite: 1].
+* Gõ tên nhánh mới: `feature/update-login`[cite: 1].
+* Bấm vào dòng chữ **Create branch: feature/update-login from 'main'** xuất hiện ở bên dưới[cite: 1].
 
-### Bước 1: Tạo Nhánh mới (`Feature Branch`)[cite: 1]
-* Tại trang chủ Repo, bấm vào ô chọn nhánh `main` $\rightarrow$ Nhập `feature/update-login` $\rightarrow$ Nhấn **Create branch: feature/update-login**[cite: 1].
-
-### Bước 2: Commit thay đổi trên Feature Branch[cite: 1]
-* Chuyển sang nhánh `feature/update-login`[cite: 1].
-* Mở file `auth.js`, nhấn nút cây bút (**Edit**) để thêm 1 dòng comment: `// Feature update`[cite: 1].
-* Nhấn **Commit changes...** (đảm bảo commit lưu ở nhánh `feature/update-login`)[cite: 1].
-
-### Bước 3: Tạo Pull Request (PR) & Quan sát Smoke Test[cite: 1]
-* Sang tab **Pull requests** $\rightarrow$ Bấm **New pull request**[cite: 1].
-* Chọn so sánh: `base: main` $\leftarrow$ `compare: feature/update-login` $\rightarrow$ Bấm **Create pull request**[cite: 1].
-* Quan sát ngay tại giao diện PR: GitHub Actions tự động kích hoạt **Quality Gate 1 (Smoke Test)**[cite: 1].
-
-📸 **MỤC CẦN CHỤP ẢNH MINH CHỨNG 2:** Màn hình giao diện Pull Request cho thấy Quality Gate 1 (Smoke Test) tự động chạy thành công (Báo **tích xanh**)[cite: 1].
-
-### Bước 4: Merge Code vào Main & Quan sát Regression Test[cite: 1]
-* Khi Smoke Test báo tích xanh, nhấn **Merge pull request** $\rightarrow$ **Confirm merge**[cite: 1].
-* Chuyển sang tab **Actions** trên thanh menu chính[cite: 1].
-* Bạn sẽ thấy hệ thống tự động kích hoạt **Quality Gate 2 (Regression Test)** trên nhánh `main` sau khi merge thành công[cite: 1].
-
-📸 **MỤC CẦN CHỤP ẢNH MINH CHỨNG 3:** Màn hình tab Actions cho thấy Quality Gate 2 (Regression Test) tự động chạy thành công (Báo **tích xanh**) trên nhánh `main`[cite: 1].
-
----
-
-## CHẶNG 5: THỰC HÀNH BẪY LỖI & KHÔI PHỤC ĐƯỜNG ỐNG (FAIL FAST & FIX)[cite: 1]
-
-### Bước 1: Cố tình làm hỏng Smoke Test (Fail Fast)[cite: 1]
-1. Chuyển sang nhánh `feature/update-login`[cite: 1].
-2. Mở file `auth.js`, sửa mật khẩu đúng từ `'123'` thành `'9999'` (cố tình tạo lỗi logic)[cite: 1].
-3. Nhấn **Commit changes...**[cite: 1].
-4. Tạo một **Pull Request** mới từ `feature/update-login` gửi vào `main`[cite: 1].
-5. Kết quả: Tại giao diện PR, bài Smoke Test sẽ thất bại và báo **MÀU ĐỎ (Failed)**, đồng thời nút Merge bị cảnh báo/khóa[cite: 1].
-
-📸 **MỤC CẦN CHỤP ẢNH MINH CHỨNG 4:** Màn hình Pull Request báo **MÀU ĐỎ (Failed)** do Smoke Test phát hiện lỗi logic (Minh chứng cơ chế Fail Fast trong < 1 phút)[cite: 1].
-
-### Bước 2: Sửa lỗi & Khôi phục đường ống (Fix & Pass)[cite: 1]
-1. Quay lại nhánh `feature/update-login`, mở file `auth.js` sửa mật khẩu lại thành đúng là `'123'`[cite: 1].
-2. Nhấn **Commit changes...**[cite: 1].
-3. Quay lại trang Pull Request trước đó, Smoke Test sẽ tự động chạy lại và báo **TÍCH XANH (Passed)**[cite: 1].
-4. Tiến hành nhấn **Merge pull request** $\rightarrow$ **Confirm merge**[cite: 1].
-5. Vào tab **Actions** kiểm tra Regression Test trên nhánh `main` tiếp tục được kích hoạt và báo tích xanh hoàn toàn[cite: 1].
-
-📸 **MỤC CẦN CHỤP ẢNH MINH CHỨNG 5:** Màn hình khôi phục thành công về **MÀU XANH (Passed)** sau khi sửa code và Merge vào main[cite: 1].
-
----
-
-## NỘP BÀI[cite: 1]
-* Tạo file PDF đặt tên: `MSSV_HoTen_Lab01_Upgrade.pdf`[cite: 1].
-* Dán **Link GitHub Repository** cá nhân và **5 hình ảnh minh chứng** đã chụp theo từng chặng ở trên vào file[cite: 1].
-* Nộp file lên cổng Moodle trước thời hạn quy định[cite: 1].
+### 2. Thực hiện Commit thay đổi trên Feature Branch
+* Đảm bảo ô chọn nhánh đang hiển thị **`feature/update-login`**[cite: 1].
+* Nhấn mở tệp `auth.js` $\rightarrow$ Click vào biểu tượng **cây bút (Edit this file)** ở góc trên bên phải[cite: 1].
+* Thêm một dòng ghi chú comment nhỏ ở đầu file:
+  ```javascript
+  // Update login feature for Lab01
